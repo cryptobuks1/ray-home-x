@@ -1,0 +1,129 @@
+@import "@/styles/mixins";
+
+.ant {
+  &-input {
+    border-radius: 8px;
+  }
+
+  &-btn {
+    border-radius: 8px;
+  }
+
+  &-message {
+    &-notice {
+      &-content {
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &-popover {
+    &-inner {
+      border-radius: 8px;
+    }
+  }
+
+  &-alert {
+    border-radius: 8px;
+
+    &-message {
+      font-weight: 700;
+    }
+  }
+
+  &-table {
+    background: $white;
+
+    th {
+      transition: none !important;
+    }
+  }
+}
+
+// dark theme
+[data-theme='dark'] {
+  .ant {
+    &-input {
+      background: $dark-gray-4;
+      border-color: darken($dark-gray-3, 15%);
+      color: $white;
+    }
+
+    &-message {
+      &-notice {
+        &-content {
+          color: $white;
+          background: darken($dark-gray-3, 15%);
+        }
+      }
+    }
+
+    &-popover {
+      &-inner {
+        background: darken($dark-gray-3, 15%);
+        
+        &-content {
+          color: $white
+        }
+      }
+
+      &-title {
+        color: $white;
+        border-color: $dark-gray-3;
+      }
+
+      &-arrow {
+        border-right-color: darken($dark-gray-3, 15%) !important;
+        border-bottom-color: darken($dark-gray-3, 15%) !important;
+      }
+    }
+
+    &-alert {
+      background: darken($dark-gray-3, 15%);
+      border-color: darken($dark-gray-3, 15%);
+      color: $white;
+
+      &-message {
+        color: $white;
+      }
+    }
+
+    &-table {
+      color: lighten($dark-gray-2, 5%);
+      background: $dark-2;
+
+      td, th {
+        border-bottom-color: darken($dark-gray-3, 15%);
+      }
+
+      &-thead  {
+        > tr > th {
+          background: darken($dark-gray-3, 15%);
+          color: lighten($dark-gray-2, 5%);
+
+          &.ant-table-column-has-sorters {
+            &:hover {
+              background: darken($dark-gray-3, 17%) !important;
+            }
+          }
+        }
+      }
+
+      &-row {
+        &:hover {
+          > td {
+            background: $dark-gray-4 !important;
+          }
+        }
+      }
+    }
+
+    &-spin {
+      &-container {
+        &:after {
+          background: $dark-gray-4;
+        }
+      }
+    }
+  }
+}

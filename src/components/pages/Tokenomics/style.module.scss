@@ -1,0 +1,41 @@
+@import "@/styles/mixins";
+
+.supply {
+  color: $black;
+  font-size: rem(36);
+
+  @media (max-width: 640px) {
+    font-size: rem(28);
+  }
+
+  &Large {
+    font-size: rem(92);
+    margin-bottom: rem(20);
+
+    @media (max-width: 1080px) {
+      font-size: rem(64);
+    }
+
+    @media (max-width: 640px) {
+      font-size: rem(36);
+    }
+  }
+}
+
+.chart {
+  padding: rem(40) rem(20);
+  border: 1px solid $border;
+  border-left: 7px solid $blue !important;
+  border-radius: 12px;
+}
+
+// dark theme
+[data-theme='dark'] {
+  .supply {
+    color: $white;
+  }
+
+  .chart {
+    border: 1px solid $dark-border;
+  }
+}

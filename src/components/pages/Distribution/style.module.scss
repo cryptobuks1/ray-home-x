@@ -1,0 +1,78 @@
+@import "@/styles/mixins";
+
+.controls {
+  display: flex;
+  padding-top: rem(40);
+  border-top: 1px solid $border;
+}
+
+.item {
+  padding-left: rem(90);
+  position: relative;
+  padding-top: rem(5);
+  padding-bottom: rem(65);
+  margin-bottom: rem(10);
+
+  @media(max-width: 480px) {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-bottom: rem(10);
+  }
+}
+
+.point {
+  height: rem(60);
+  width: rem(60);
+  background: $border;
+  border-radius: 80px;
+  position: absolute;
+  top: rem(6);
+  left: rem(-4);
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: rem(36);
+  color: white;
+
+  @media(max-width: 480px) {
+    position: static;
+    margin-bottom: rem(20);
+  }
+
+  &Active {
+    background: $success !important;
+  }
+}
+
+.line {
+  position: absolute;
+  left: rem(22);
+  top: rem(90);
+  bottom: rem(10);
+  width: rem(8);
+  background: $border;
+  border-radius: 8px;
+
+  @media(max-width: 480px) {
+    display: none;
+  }
+  
+  &Active {
+    background: $success !important;
+  }
+}
+
+// dark theme
+[data-theme='dark'] {
+  .point {
+    background: $dark-gray-4;
+    color: black;
+  }
+  
+  .line {
+    background: $dark-gray-4;
+  }
+}

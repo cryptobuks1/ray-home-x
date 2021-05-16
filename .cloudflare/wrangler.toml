@@ -1,8 +1,8 @@
-name = "ray-home-distribution"
+name = "ray-home-x"
 type = "webpack"
 account_id = "792461088a4c863230f3faee467094b1"
 # workers_dev = true
-route = "distribution.rraayy.com/*"
+route = "x.rraayy.com/*"
 zone_id = "d2b7b0704a9d26e0725937654b59f6f0"
 
 [site]

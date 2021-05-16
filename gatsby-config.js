@@ -7,19 +7,16 @@
 const path = require("path")
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
-      resolve: "gatsby-plugin-anchor-links",
-      options: {
-        offset: -25,
-      }
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `RAY Network - Cardano Ecosystem`,
+        name: `Ray Network - Cardano Ecosystem`,
         icon: `static/favicon.png`,
       },
     },
@@ -66,7 +63,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-html-attributes',
       options: {
-        'data-theme': 'light'
+        'data-theme': 'default'
       }
     },
   ],

@@ -1,5 +1,5 @@
-### RAY Network Distribution ###
-https://distribution.rraayy.com
+### XRAY Token Information ###
+https://x.rraayy.com
 
 ### Gatsby Documentation ###
 Please read documentation here https://www.gatsbyjs.com/docs/

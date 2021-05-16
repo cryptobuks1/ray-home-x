@@ -1,0 +1,100 @@
+@import "@/styles/mixins";
+
+.menu {
+  padding-top: rem(40);
+  padding-bottom: rem(30);
+  margin-bottom: rem(60);
+
+  &Top {
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 820px) {
+      flex-direction: column;
+    }
+  }
+
+  &Controls {
+    display: flex;
+    margin-left: auto;
+
+    @media (max-width: 820px) {
+      margin-left: 0;
+      margin-bottom: rem(20);
+    }
+  }
+
+  &Content {
+    @media (max-width: 820px) {
+      order: 2;
+    }
+  }
+
+  &Theme {
+    margin-left: auto;
+    margin-right: rem(30);
+    display: flex;
+    align-self: center;
+    font-size: rem(24);
+    cursor: pointer;
+
+    @media (max-width: 820px) {
+      margin-right: 0;
+      margin-left: rem(30);
+      order: 2;
+    }
+  }
+
+  &Logo {
+    display: flex;
+    justify-content: center;
+
+    a {
+      display: flex;
+    }
+  }
+}
+
+.link {
+  margin-right: rem(25);
+  display: inline-block;
+  margin-bottom: rem(10);
+  position: relative;
+  white-space: nowrap;
+
+  :global(.fe) {
+    font-size: rem(14);
+    top: -1px;
+    left: 2px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  span:first-child {
+    opacity: 0;
+    font-weight: 600;
+  }
+
+  span:last-child {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  &Active {
+    color: $black !important;
+    font-weight: 700;
+  }
+}
+
+// dark theme
+[data-theme='dark'] {
+  .link {
+    &Active {
+      color: $white !important;
+    }
+  }
+}

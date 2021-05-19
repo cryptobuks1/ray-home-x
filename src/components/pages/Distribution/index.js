@@ -51,7 +51,7 @@ export default () => {
     datasets: [
       {
         type: 'line',
-        label: 'Max Rewards Per Epoch',
+        label: 'Max Rewards',
         data: distributed.map(epoch => epoch.maxRewards),
         fill: true,
         radius: 0,
@@ -68,7 +68,7 @@ export default () => {
       },
       {
         type: 'bar',
-        label: 'Rewards Distributed in Epoch',
+        label: 'Epoch Rewards Distributed',
         data: distributed.map(epoch => epoch.xray),
         fill: true,
         stepped: 'before',
@@ -116,22 +116,17 @@ export default () => {
     plugins: {
       tooltip: {
         callbacks: {
-          label: (data) => {
-            const { datasetIndex } = data
+          title: (tooltipItem) => `Epoch ${tooltipItem[0].label} (for Epoch ${parseInt(tooltipItem[0].label) - 2})`,
+          label: (tooltipItem) => {
+            const { datasetIndex } = tooltipItem
             const ds = chartData.datasets[datasetIndex]
             const arr = []
-            arr.push(`${ds.label}: ${ds.data[data.dataIndex]} ${ds.postfix}`)
-            datasetIndex === 1 && arr.push(`ADA per 1 XRAY: ${distributed[data.dataIndex].rate / 1000000} ADA`)
+            arr.push(`${ds.label}: ${ds.data[tooltipItem.dataIndex]} ${ds.postfix}`)
+            datasetIndex === 1 && arr.push(`ADA per 1 XRAY: ${distributed[tooltipItem.dataIndex].rate / 1000000} ADA`)
             return arr
           },
         }
       }
-      // tooltip: {
-      //   callbacks: {
-      //     title: (tooltipItem) => `Epoch ${tooltipItem[0].label} (for Epoch ${parseInt(tooltipItem[0].label) - 2})`,
-      //     label: (tooltipItem) => chartData.datasets.map(ds => `${ds.label}: ${ds.data[tooltipItem.dataIndex]} ${ds.postfix}`)
-      //   }
-      // },
     }
   }
 

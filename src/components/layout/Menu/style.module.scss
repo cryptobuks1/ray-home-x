@@ -62,12 +62,6 @@
   position: relative;
   white-space: nowrap;
 
-  :global(.fe) {
-    font-size: rem(14);
-    top: -1px;
-    left: 2px;
-  }
-
   &:last-child {
     margin-right: 0;
   }

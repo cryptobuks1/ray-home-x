@@ -18,14 +18,9 @@ const initialState = {
   ...STORED_SETTINGS({
     theme: 'default',
     cookiesViewed: false,
-    modalPresale: false,
-    modalRewards: false,
-    delegationRewardsState: {
-      currentEpoch: 0,
-      lastRewardEpoch: 0,
-      rewards: [],
-    },
   }),
+  modalPresale: false,
+  modalRewards: false,
 }
 
 export default function settingsReducer(state = initialState, action) {

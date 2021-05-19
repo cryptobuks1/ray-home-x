@@ -21,6 +21,12 @@
     }
   }
 
+  &__line {
+    margin: rem(20) 0;
+    height: 1px;
+    background: $border;
+  }
+
   &__ticker {
     display: inline-block;
     font-size: 83%;
@@ -181,6 +187,10 @@
       &--bottom {
         border-bottom: 1px solid $dark-border;
       }
+    }
+
+    &__line {
+      background: $dark-border;
     }
 
     &__ticker {

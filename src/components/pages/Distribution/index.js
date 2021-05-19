@@ -1,8 +1,7 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Button, Popover } from "antd"
 import { useSelector, useDispatch } from "react-redux"
 import { Line } from 'react-chartjs-2'
-import { range } from "lodash"
 import { format } from "@/utils"
 import Heading from "@/components/layout/Heading"
 import style from "./style.module.scss"
@@ -10,10 +9,29 @@ import style from "./style.module.scss"
 export default () => {
   const dispatch = useDispatch()
   const theme = useSelector((state) => state.settings.theme)
-  const { currentEpoch, lastRewardEpoch, rewards } = useSelector((state) => state.settings.delegationRewardsState)
   const isLight = theme === 'default'
+  const [rewards, setRewards] = useState({
+    currentEpoch: 0,
+    distributed: [],
+    totalAccrued: 0,
+    totalUndelivered: 0,
+  })
+  const { distributed } = rewards
 
-  console.log(rewards)
+  const fetchData = () => {
+    console.log('fetch')
+    // fetch(`http://localhost:8080/rewards/delegation/state/`)
+    fetch(`https://graphql-helper.rraayy.com/rewards/delegation/state/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setRewards(data)
+      })
+  }
+
+  useEffect(() => {
+    fetchData()
+    // eslint-disable-nextline
+  }, [])
 
   const openRewards = (e) => {
     e.preventDefault()
@@ -26,29 +44,15 @@ export default () => {
     })
   }
 
-  const total = 100000000
-  const initialEpoch = 233
-  const startEpoch = 270
-  const endEpoch = 480
-  const diff = endEpoch - startEpoch
-  const epochs = range(initialEpoch, endEpoch + 1)
-  const perEpoch = total / diff
-  const coeff = 0.00476
+  console.log(rewards)
 
-  const randomInteger = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  const dataMax = {
-    labels: epochs.map(epoch => `Epoch ${epoch}`),
+  const chartData = {
+    labels: distributed.map(epoch => epoch.epoch),
     datasets: [
       {
         type: 'line',
         label: 'Max Rewards Per Epoch',
-        data: epochs.map((epoch) => {
-          const after = parseInt(perEpoch - (perEpoch * coeff * (epoch - startEpoch)))
-          return epoch < startEpoch ? null : after
-        }),
+        data: distributed.map(epoch => epoch.maxRewards),
         fill: true,
         radius: 0,
         backgroundColor: [
@@ -63,16 +67,13 @@ export default () => {
       },
       {
         type: 'bar',
-        label: 'Total Rewards Distributed',
-        data: epochs.map((epoch) => {
-          const amount = randomInteger(13000, 22000)
-          return epoch <= 263 ? amount : null
-        }),
+        label: 'Rewards Distributed in Epoch',
+        data: distributed.map(epoch => epoch.xray),
         fill: true,
         stepped: 'before',
         radius: 0,
         backgroundColor: [
-          'rgba(54, 162, 235, 0.47',
+          'rgba(54, 162, 235, 1',
         ],
         hoverBackgroundColor: [
           'rgba(54, 162, 235, 1)',
@@ -83,29 +84,6 @@ export default () => {
       },
     ]
   }
-
-  // const dataDistr = {
-  //   labels: epochs.slice(0, 20).map(epoch => `${epoch}`),
-  //   datasets: [
-  //     {
-  //       label: 'Distributed in Epoch',
-  //       data: epochs.slice(0, 20).map(epoch => parseInt(perEpoch - (perEpoch * coeff * (epoch - startEpoch)))),
-  //       fill: true,
-  //       stepped: 'before',
-  //       radius: 0,
-  //       border: 2,
-  //       backgroundColor: [
-  //         'rgba(54, 162, 235, 0.3)',
-  //       ],
-  //       hoverBackgroundColor: [
-  //         'rgba(54, 162, 235, 0.8)',
-  //       ],
-  //       borderColor: [
-  //         'rgba(54, 162, 235, 0.8)',
-  //       ],
-  //     },
-  //   ]
-  // }
 
   const options = {
     responsive: true,
@@ -138,7 +116,7 @@ export default () => {
         callbacks: {
           label: (data) => {
             const amount = data.dataset.data[data.dataIndex]
-            return amount ? `${data.dataset.label}: ${format(amount)} XRAY` : `0 XRAY`
+            return amount ? `${data.dataset.label}: ${format(amount)} XRAY` : `${data.dataset.label}: 0 XRAY`
           },
         }
       }
@@ -171,7 +149,7 @@ export default () => {
             Delegate your ADA to Ray Network pools and receive rewards in ADA and XRAY.
             <br />
             Use Ray Wallet, Yoroi, Adalite or Daedalus to delegate. Please do not use exchanges or centralized wallets, your rewards may be lost.{' '}
-            <a href="https://rraayy.com/stake/" target="_blank" rel="noopener noreferrer">Pools list &rarr;</a>
+            <a href="https://rraayy.com/stake/" target="_blank" rel="noopener noreferrer">Pools list <i className="fe fe-arrow-up-right" /></a>
           </p>
           <ul className="mb-5">
             <li>5.5% ROI in ADA per epoch</li>
@@ -182,24 +160,19 @@ export default () => {
               <Popover
                 content={(
                   <div className="ray__info">
-                    <div className="ray__info__label">Epoch 233-270</div>
-                    <ul className="mb-2">
-                      <li>
-                        <strong>Rewards Rate:</strong> 1{' '}
-                        <span className="ray__ticker">XRAY</span>{' '}
-                        per 50 {' '}
-                        <span className="ray__ticker">ADA</span>
-                      </li>
-                    </ul>
-                    <div className="ray__info__label">Epoch 270-480</div>
+                    <div className="ray__info__label">Epoch 225-500</div>
                     <ul>
                       <li>
-                        <strong>Start Epoch Rewards:</strong> 476,190{' '}
+                        <strong>Total:</strong> 100,000,000
+                        <span className="ray__ticker">XRAY</span>{' '}
+                      </li>
+                      <li>
+                        <strong>Epoch Rewards:</strong> 444,444{' '}
                         <span className="ray__ticker">XRAY</span>{' '}
                         / epoch
                       </li>
-                      <li><strong>Decrease:</strong> -0.476% each epoch</li>
-                      <li><strong>Share:</strong> (delegator_stake / pools_stake) * epoch_reward</li>
+                      <li><strong>Decrease:</strong> -0.444% each epoch</li>
+                      <li><strong>Decrease from Epoch:</strong> 275</li>
                       <li>
                         <strong>Max Rewards Rate:</strong> 1{' '}
                         <span className="ray__ticker">XRAY</span>{' '}
@@ -207,6 +180,7 @@ export default () => {
                         50 {' '}
                         <span className="ray__ticker">ADA</span>
                       </li>
+                      <li><strong>Epoch Share:</strong> (delegator_stake / pools_stake) * epoch_reward</li>
                     </ul>
                   </div>
                 )}
@@ -221,13 +195,13 @@ export default () => {
               <Popover
                 content={(
                   <div className="ray__info">
-                    <div className="ray__info__label">Epoch 233-270</div>
+                    <div className="ray__info__label">Epoch 235-275</div>
                     <ul>
                       <li>
                         <strong>Total Rewards:</strong> 1,538,200{' '}
                         <span className="ray__ticker">XRAY</span>
                       </li>
-                      <li><strong>Share:</strong> total / total_staked * user_total_stake</li>
+                      <li><strong>Share:</strong> (total_rewards / pools_staked) * delegator_stake</li>
                     </ul>
                   </div>
                 )}
@@ -235,13 +209,22 @@ export default () => {
                 <span className="ray__details">distribution rules</span>
               </Popover>
             </li>
-            <li>All unrealized tokens will be burned in Epoch 485</li>
+            <li>All unrealized tokens will be burned in Epoch 505</li>
           </ul>
+          <p className="mb-0">
+            <strong className="text-active">Distribution Data</strong>
+          </p>
           <p className="mb-3">
-            <strong className="text-active">Current Epoch:  {currentEpoch}; Last Rewarded Epoch: {lastRewardEpoch}</strong>
+            <strong className="text-active">
+              Current Epoch: {rewards.currentEpoch};{' '}
+              Total Accrued: {format(rewards.totalAccrued)}{' '}
+              <span className="ray__ticker">XRAY</span>;{' '}
+              Undelivered: {format(rewards.totalUndelivered)}{' '}
+              <span className="ray__ticker">XRAY</span>
+            </strong>
           </p>
           <div className="mb-5">
-            <Line data={dataMax} options={options} height={300} />
+            <Line data={chartData} options={options} height={300} />
           </div>
           {/* <p>
             <strong className="text-active">Distributed Total: 215,125 XRAY</strong>

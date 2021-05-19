@@ -11,7 +11,7 @@ export default () => {
     },
     {
       title: 'Ray Stake',
-      descr: 'Stake solution. Earn 5.5% ROI in ADA',
+      descr: 'Stake solution, earn 5.5% ROI in ADA',
       url: 'https://raywallet.io/#/stake',
     },
     {
@@ -26,7 +26,7 @@ export default () => {
     },
     {
       title: 'Ray KickStart',
-      descr: 'Decetralized fundrising',
+      descr: 'Decentralized fundrising',
       url: 'https://raywallet.io/#/kickstart',
     },
     {
@@ -36,7 +36,7 @@ export default () => {
     },
     {
       title: 'Ray Token',
-      descr: 'Ray Network governance token',
+      descr: 'Ray Network governance & payment token',
       url: 'https://token.rraayy.com',
     },
     {

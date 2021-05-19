@@ -76,16 +76,8 @@ export default () => {
           className={style.link}
           activeClassName={style.linkActive}
         >
-          <span>About Token</span>
-          <span>About Token</span>
-        </Link>
-        <Link
-          to="/distribution"
-          className={style.link}
-          activeClassName={style.linkActive}
-        >
-          <span>Distribution</span>
-          <span>Distribution</span>
+          <span>Home</span>
+          <span>Home</span>
         </Link>
         <a
           href="/"
@@ -94,8 +86,8 @@ export default () => {
           rel="noopener noreferrer"
           onClick={openRewards}
         >
-          <span>Delegators Rewards</span>
-          <span>Delegators Rewards</span>
+          <span>Delegator Rewards</span>
+          <span>Delegator Rewards</span>
         </a>
         <a
           href="https://rraayy.com/wiki/"
@@ -103,8 +95,8 @@ export default () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>Wiki &rarr;</span>
-          <span>Wiki &rarr;</span>
+          <span>Wiki <i className="fe fe-arrow-up-right" /></span>
+          <span>Wiki <i className="fe fe-arrow-up-right" /></span>
         </a>
         <a
           href="https://raywallet.io/"
@@ -112,8 +104,8 @@ export default () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>Ray Wallet &rarr;</span>
-          <span>Ray Wallet &rarr;</span>
+          <span>Ray Wallet <i className="fe fe-arrow-up-right" /></span>
+          <span>Ray Wallet <i className="fe fe-arrow-up-right" /></span>
         </a>
       </div>
     </div>

@@ -56,5 +56,5 @@ export default () => {
       </a>
       </div>
     )
-    : null
+    : <div />
 }

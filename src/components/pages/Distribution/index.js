@@ -64,6 +64,7 @@ export default () => {
         borderColor: [
           'rgba(54, 162, 235, 1)',
         ],
+        postfix: 'XRAY',
       },
       {
         type: 'bar',
@@ -81,6 +82,7 @@ export default () => {
         borderColor: [
           'rgba(54, 162, 235, 1)',
         ],
+        postfix: 'XRAY',
       },
     ]
   }
@@ -115,11 +117,21 @@ export default () => {
       tooltip: {
         callbacks: {
           label: (data) => {
-            const amount = data.dataset.data[data.dataIndex]
-            return amount ? `${data.dataset.label}: ${format(amount)} XRAY` : `${data.dataset.label}: 0 XRAY`
+            const { datasetIndex } = data
+            const ds = chartData.datasets[datasetIndex]
+            const arr = []
+            arr.push(`${ds.label}: ${ds.data[data.dataIndex]} ${ds.postfix}`)
+            datasetIndex === 1 && arr.push(`ADA per 1 XRAY: ${distributed[data.dataIndex].rate / 1000000} ADA`)
+            return arr
           },
         }
       }
+      // tooltip: {
+      //   callbacks: {
+      //     title: (tooltipItem) => `Epoch ${tooltipItem[0].label} (for Epoch ${parseInt(tooltipItem[0].label) - 2})`,
+      //     label: (tooltipItem) => chartData.datasets.map(ds => `${ds.label}: ${ds.data[tooltipItem.dataIndex]} ${ds.postfix}`)
+      //   }
+      // },
     }
   }
 
@@ -160,7 +172,7 @@ export default () => {
               <Popover
                 content={(
                   <div className="ray__info">
-                    <div className="ray__info__label">Epoch 225-500</div>
+                    <div className="ray__info__label">Epoch 235-500</div>
                     <ul>
                       <li>
                         <strong>Total:</strong> 100,000,000

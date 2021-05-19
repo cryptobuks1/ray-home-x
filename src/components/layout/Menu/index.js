@@ -86,8 +86,8 @@ export default () => {
           rel="noopener noreferrer"
           onClick={openRewards}
         >
-          <span>Delegator Rewards</span>
-          <span>Delegator Rewards</span>
+          <span>Check / Withdraw Rewards</span>
+          <span>Check / Withdraw Rewards</span>
         </a>
         <a
           href="https://rraayy.com/wiki/"

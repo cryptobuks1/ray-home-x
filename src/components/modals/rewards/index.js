@@ -183,92 +183,96 @@ const RewardsModal = () => {
       )}
       {step === 2 && (
         <div>
-          {!rewards.found && (
-            <div>
-              <div className="mb-4">
-                <Alert
-                  type="warning"
-                  showIcon
-                  message="Address not found"
-                  description="Try using a different address. This address must have been previously used for any transaction"
-                />
+          <div>
+            {(!rewards.rewardsHistory?.length && rewards.found) && (
+              <div className="mb-3">
+                <Alert type="warning" showIcon message="Stake is not matured" description="You should wait 2 epochs after delegation to receive your XRAY rewards" />
               </div>
-              <Tooltip title="Soon">
-                <Button type="primary" className="ray__button w-100" onClick={clear}>
-                  Try again
-                </Button>
-              </Tooltip>
-            </div>
-          )}
-          {rewards.found && (
-            <div>
-              {!rewards.rewardsHistory?.length && (
-                <div className="mb-3">
-                  <Alert type="warning" showIcon message="Stake is not matured" description="Please wait for the next epoch to receive your XRAY rewards" />
+            )}
+            {!rewards.found && (
+              <div>
+                <div className="mb-4">
+                  <Alert
+                    type="warning"
+                    showIcon
+                    message="Address not found"
+                    description="Try using a different address. This address must have been previously used for any transaction"
+                  />
                 </div>
-              )}
-              <div className="row mb-3">
-                <div className="col-6">
-                  <div className="ray__form__label">
-                    Total Rewards
+              </div>
+            )}
+            <div className="row mb-3">
+              <div className="col-6">
+                <div className="ray__form__label">
+                  Total Rewards
                   </div>
-                  <div>
-                    <div className={style.key}>
-                      {format(rewards.total)}{' '}
-                      <span className="ray__ticker">XRAY</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="ray__form__label">
-                    Early Delegator Bonus
-                  </div>
+                <div>
                   <div className={style.key}>
-                    {format(rewards.totalEarlyBonus)}{' '}
+                    {format(rewards.total)}{' '}
                     <span className="ray__ticker">XRAY</span>
                   </div>
                 </div>
               </div>
-              <div className="ray__form__label">
-                {rewards.isAddress && 'Withdrawal address'}
-                {!rewards.isAddress && 'Stake key'}
-              </div>
-              <div className="mb-3">
+              <div className="col-6">
+                <div className="ray__form__label">
+                  Early Delegator Bonus
+                  </div>
                 <div className={style.key}>
-                  {address.slice(0, 8)}...{address.slice(-12)}{' '}
-                  <CopyToClipboard
-                    text={address}
-                    onCopy={() => message.success('Copied to clipboard')}
-                  >
-                    <Tooltip title="Copy">
-                      <i className="fe fe-copy ray__copy" />
-                    </Tooltip>
-                  </CopyToClipboard>
+                  {format(rewards.totalEarlyBonus)}{' '}
+                  <span className="ray__ticker">XRAY</span>
                 </div>
               </div>
-              <div className="ray__line" />
+            </div>
+            {rewards.found && (
               <div>
                 <div className="ray__form__label">
-                  Rewards History by Epoch
+                  {rewards.isAddress && 'Withdrawal address'}
+                  {!rewards.isAddress && 'Stake key'}
                 </div>
-                <div>
-                  <Bar data={chartData} options={options} height={140} />
+                <div className="mb-3">
+                  <div className={style.key}>
+                    {address.slice(0, 8)}...{address.slice(-12)}{' '}
+                    <CopyToClipboard
+                      text={address}
+                      onCopy={() => message.success('Copied to clipboard')}
+                    >
+                      <Tooltip title="Copy">
+                        <i className="fe fe-copy ray__copy" />
+                      </Tooltip>
+                    </CopyToClipboard>
+                  </div>
                 </div>
               </div>
-              {rewards.isAddress && (
-                <div className="mt-4">
-                  <Tooltip title={(
-                    <div className="text-center">Withdrawals will be available after Epoch 275</div>
-                  )}
-                  >
-                    <a href="/" disabled type="primary" className="ray__button w-100" onClick={generateWallet}>
-                      Withdraw
-                    </a>
-                  </Tooltip>
+            )}
+            <div className="ray__line" />
+            <div>
+              <div className="ray__form__label">
+                Rewards History by Epoch
                 </div>
-              )}
+              <div>
+                <Bar data={chartData} options={options} height={140} />
+              </div>
             </div>
-          )}
+            {!rewards.found && (
+              <div className="mt-4">
+                <Button type="primary" className="ray__button w-100" onClick={clear}>
+                  Try again
+                </Button>
+              </div>
+            )}
+            {rewards.isAddress && (
+              <div className="mt-4">
+                <Tooltip title={(
+                  <div className="text-center">Withdrawals will be available after Epoch 275</div>
+                )}
+                >
+                  <a href="/" disabled type="primary" className="ray__button w-100" onClick={generateWallet}>
+                    Withdraw
+                    </a>
+                </Tooltip>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </Modal>

@@ -93,7 +93,7 @@ export default () => {
   }
 
   return (
-    <div className="ray__block mb-5">
+    <div className="ray__block">
       <Heading id="tokenomics">
         <strong className="bolder">XRAY</strong> tokenomics
       </Heading>

@@ -52,7 +52,7 @@ export default () => {
   ]
 
   return (
-    <div className="ray__block">
+    <div className="ray__block mb-4 pb-3">
       <Heading id="solutions">
         <strong className="bolder">Ray Network</strong> solutions
       </Heading>

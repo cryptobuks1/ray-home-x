@@ -1,5 +1,9 @@
 @import "@/styles/mixins";
 
+.space {
+  margin-bottom: rem(-30);
+}
+
 .item {
   height: 100%;
   display: block;

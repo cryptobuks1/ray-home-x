@@ -35,7 +35,7 @@ export default () => {
   ]
 
   return (
-    <div className="ray__block ray__block--top">
+    <div className="ray__block ray__block--top mb-5 pb-4">
       <div className="ray__heading">Join a global community</div>
       <div className="font-size-24 mb-5 text-center">
         Learn more about Ray Network, chat with the team, others in the community

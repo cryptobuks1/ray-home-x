@@ -56,7 +56,7 @@ export default () => {
       <Heading id="solutions">
         <strong className="bolder">Ray Network</strong> solutions
       </Heading>
-      <div className="row">
+      <div className={`row ${style.space}`}>
         {items.map((item, key) => {
           return (
             <div key={key} className="col-md-4 col-sm-6 col-12">

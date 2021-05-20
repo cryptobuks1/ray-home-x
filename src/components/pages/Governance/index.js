@@ -5,7 +5,7 @@ import Heading from "@/components/layout/Heading"
 export default () => {
 
   return (
-    <div className="ray__block mb-4 pb-2">
+    <div className="ray__block">
       <Heading id="solutions">
         <strong className="bolder">Governance</strong> assets
       </Heading>

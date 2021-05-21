@@ -174,7 +174,7 @@ export default () => {
                         <span className="ray__ticker">XRAY</span>{' '}
                       </li>
                       <li>
-                        <strong>Epoch Rewards:</strong> 444,444{' '}
+                        <strong>Epoch Rewards:</strong> 888,888{' '}
                         <span className="ray__ticker">XRAY</span>{' '}
                         / epoch
                       </li>
@@ -208,7 +208,7 @@ export default () => {
                         <strong>Total Rewards:</strong> 1,538,200{' '}
                         <span className="ray__ticker">XRAY</span>
                       </li>
-                      <li><strong>Share:</strong> (total_rewards / pools_staked) * delegator_stake</li>
+                      <li><strong>Share:</strong> (rewards / accum_pools_stake) * accum_delegator_stake</li>
                     </ul>
                   </div>
                 )}

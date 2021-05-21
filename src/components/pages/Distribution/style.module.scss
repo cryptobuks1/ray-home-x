@@ -7,14 +7,14 @@
 }
 
 .item {
-  padding-right: rem(90);
+  padding-left: rem(90);
   position: relative;
   padding-top: rem(5);
   padding-bottom: rem(65);
   margin-bottom: rem(10);
 
   @media(max-width: 480px) {
-    padding-right: 0;
+    padding-left: 0;
   }
 
   &:last-child {
@@ -29,7 +29,7 @@
   border-radius: 80px;
   position: absolute;
   top: rem(2);
-  right: rem(-4);
+  left: rem(-4);
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@
 
 .line {
   position: absolute;
-  right: rem(22);
+  left: rem(22);
   top: rem(85);
   bottom: rem(15);
   width: rem(8);

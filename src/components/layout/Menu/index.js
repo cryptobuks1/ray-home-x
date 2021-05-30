@@ -38,7 +38,7 @@ export default () => {
   }
 
   return (
-    <div className={`ray__block ray__block--bottom ${style.menu}`}>
+    <div className={`ray__block ${style.menu}`}>
       <div className={style.menuTop}>
         <div className={style.menuContent}>
           <h2 className="mb-0">

@@ -7,11 +7,9 @@
 }
 
 .item {
-  padding-left: rem(90);
   position: relative;
-  padding-top: rem(5);
-  padding-bottom: rem(65);
   margin-bottom: rem(10);
+  padding: rem(5) 0 rem(65) rem(90);
 
   @media(max-width: 480px) {
     padding-left: 0;
@@ -52,7 +50,7 @@
   left: rem(22);
   top: rem(85);
   bottom: rem(15);
-  width: rem(8);
+  width: rem(4);
   background: $border;
   border-radius: 8px;
 
@@ -67,6 +65,10 @@
 
 // dark theme
 [data-theme='dark'] {
+  .controls {
+    border-top: 1px solid $dark-border;
+  }
+
   .point {
     background: $dark-gray-4;
     color: black;

@@ -5,44 +5,54 @@ import style from "./style.module.scss"
 export default () => {
   const items = [
     {
+      title: 'XRAY Token',
+      descr: 'Ray Network governance & payment token',
+      url: 'https://x.rraayy.com',
+    },
+    {
       title: 'Ray Wallet',
       descr: 'A lightweight Cardano multiplatform and multifunctional wallet',
-      url: 'https://raywallet.io',
+      url: 'https://rraayy.com/ray-wallet',
     },
     {
       title: 'Ray Stake',
       descr: 'Stake solution, earn 5.5% ROI in ADA',
-      url: 'https://raywallet.io/#/stake',
+      url: 'https://rraayy.com/stake',
     },
     {
       title: 'Ray Rewards',
       descr: 'Get additional rewards in XRAYs for staking and other activities',
-      url: 'https://raywallet.io/#/rewards',
+      url: 'https://rraayy.com/rewards',
     },
     {
       title: 'Ray Swap',
       descr: 'Automated liquidity protocol, AMM DEX',
-      url: 'https://rayswap.org',
+      url: 'https://rraayy.com/swap',
     },
     {
       title: 'Ray KickStart',
-      descr: 'Decentralized fundrising',
-      url: 'https://raywallet.io/#/kickstart',
+      descr: 'Decentralised fundraising',
+      url: 'https://rraayy.com/kickstart',
     },
     {
-      title: 'Ray NFT',
+      title: 'Ray NFT Marketplace',
       descr: 'NFT Marketplace with advanced features',
-      url: 'https://raywallet.io/#/nft',
+      url: 'https://rraayy.com/nft-marketplace',
     },
     {
-      title: 'Ray Token',
-      descr: 'Ray Network governance & payment token',
-      url: 'https://token.rraayy.com',
-    },
-    {
-      title: 'Ray Data',
+      title: 'Ray Data Containers',
       descr: 'B2B data storage and authorization solution',
-      url: 'https://rraayy.com/data-containers/',
+      url: 'https://rraayy.com/data-containers',
+    },
+    {
+      title: 'Wiki',
+      descr: 'Cardano & Ray Network information database',
+      url: 'https://rraayy.com/wiki',
+    },
+    {
+      title: 'Tokens List',
+      descr: 'Cardano native token list curated by Ray',
+      url: 'https://rraayy.com/tokens-list',
     },
     {
       title: 'Cardano-Web3.js',

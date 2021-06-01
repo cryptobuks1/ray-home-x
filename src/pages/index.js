@@ -11,8 +11,8 @@ export default () => {
   return (
     <Layout>
       <Promo />
-      <Distribution />
       <Introducing />
+      <Distribution />
       <Tokenomics />
       <Solutions />
       <Governance />

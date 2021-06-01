@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Link } from "gatsby"
 import style from "./style.module.scss"
 
 export default () => {
@@ -71,14 +70,6 @@ export default () => {
         </div>
       </div>
       <div className="pt-3">
-        <Link
-          to="/"
-          className={style.link}
-          activeClassName={style.linkActive}
-        >
-          <span>Home</span>
-          <span>Home</span>
-        </Link>
         <a
           href="/"
           className={style.link}
@@ -88,6 +79,15 @@ export default () => {
         >
           <span>Check / Withdraw Rewards</span>
           <span>Check / Withdraw Rewards</span>
+        </a>
+        <a
+          href="https://cardanoscan.io/token/ae2a0aa5a24b27d9868c4a73b7c08077ac21baade5eca0fa467a2bbd58524159"
+          className={style.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Explorer <i className="fe fe-arrow-up-right" /></span>
+          <span>Explorer <i className="fe fe-arrow-up-right" /></span>
         </a>
         <a
           href="https://rraayy.com/wiki/"

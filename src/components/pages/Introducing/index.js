@@ -19,6 +19,10 @@ export default () => {
       </p>
       <p className="mb-5">
         Ticker: <strong className="bolder text-active"><span className="ray__ticker">XRAY</span></strong>
+        <br />
+        Policy ID: <strong className="text-active"><span className="">ae2a0aa5a24b27d9868c4a73b7c08077ac21baade5eca0fa467a2bbd</span></strong>
+        <br />
+        Fingerprint: <strong className="text-active"><span className="">asset14y0dxsz9s9nd2lefkqvuu7edqlsg5p70r3wyxa</span></strong>
       </p>
       <h5>
         What is the utility of the XRAY token?
